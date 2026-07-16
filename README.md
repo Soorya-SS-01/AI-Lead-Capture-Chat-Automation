@@ -1,161 +1,281 @@
-# LeadPilot AI — Instagram RAG Chat Agent & Lead Capture Automation
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=190&section=header&text=LeadPilot%20AI&fontSize=32&fontColor=fff&animation=fadeIn&fontAlignY=32&desc=AI%20RAG%20Chat%20Agent%20%2B%20Lead%20Capture%20for%20Instagram&descAlignY=62&descSize=22" width="100%"/>
 
-> An AI-powered Instagram DM automation system that answers customer questions using company-specific knowledge (RAG), automatically extracts and stores lead contact details, and syncs qualified leads to a CRM — all orchestrated with n8n.
+<div align="center">
 
-*(Suggested project name — swap in whatever you're branding this as, e.g. "Firstday AI Instagram Agent". "LeadPilot AI" is just a placeholder that's short, catchy, and describes what it does.)*
+### 🤖 Auto-Replies with Company Knowledge &nbsp;|&nbsp; 📇 Captures Leads Automatically &nbsp;|&nbsp; 🔄 Syncs to CRM
+
+</div>
+
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=28A745&center=true&vCenter=true&width=650&lines=n8n+%2B+RAG+%2B+Gemini+Powered+Chat+Agent;Listen+%7C+Retrieve+%7C+Reply+%7C+Capture+%7C+Sync;Instagram+DMs%2C+Automated+End+to+End)](https://git.io/typing-svg)
+
+![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)
+![Qdrant](https://img.shields.io/badge/Qdrant-DC244C?style=flat-square&logo=qdrant&logoColor=white)
+![GoogleSheets](https://img.shields.io/badge/Google_Sheets-34A853?style=flat-square&logo=googlesheets&logoColor=white)
+![Instagram](https://img.shields.io/badge/Instagram_API-E4405F?style=flat-square&logo=instagram&logoColor=white)
+![ZohoBigin](https://img.shields.io/badge/Zoho_Bigin-F9B21D?style=flat-square&logo=zoho&logoColor=white)
+
+</div>
 
 ---
 
-## 📌 Overview
+## 🖼️ Live Demo & Workflow Screenshots
 
-**LeadPilot AI** automates the first line of customer conversation on Instagram DMs for a business. Instead of a human manually replying to every "what's the price of X" message, the system:
+<div align="center">
+<table>
+<tr>
+<td width="50%" align="center"><b>Main Workflow</b><br/><img src="assets/workflow-1-main.png" width="100%"/></td>
+<td width="50%" align="center"><b>Knowledge Ingestion Workflow</b><br/><img src="assets/workflow-2-ingestion.png" width="100%"/></td>
+</tr>
+<tr>
+<td width="50%" align="center"><b>CRM Sync Workflow</b><br/><img src="assets/workflow-3-crm-sync.png" width="100%"/></td>
+<td width="50%" align="center"><b>Live Instagram Chat</b><br/><img src="assets/instagram-chat-demo.png" width="100%"/></td>
+</tr>
+</table>
+</div>
+
+> 📁 Drop your exported PNGs into an `assets/` folder in the repo root with these exact filenames, and the images above will render automatically on GitHub.
+
+---
+
+## 📖 About the Project
+
+**LeadPilot AI** automates the first line of customer conversation on a business Instagram account. Instead of a human replying to every "what's the price of X" DM, the system:
 
 1. Listens for incoming Instagram DMs via a webhook.
-2. Answers customer questions **using the company's own product/knowledge data** (via Retrieval-Augmented Generation), instead of a generic or hallucinated AI answer.
+2. Answers customer questions using the **company's own product knowledge**, via Retrieval-Augmented Generation (RAG) — not a generic or hallucinated AI answer.
 3. Extracts a lead's **Name, Email, and Phone** from natural conversation and saves it to Google Sheets.
-4. On a schedule, syncs those captured leads into a CRM (Zoho Bigin) so the sales team can follow up.
+4. On a schedule, syncs captured leads into a CRM (**Zoho Bigin**) so the sales team can follow up.
 
-**Tech Stack:** n8n · Python/JavaScript · RAG (Qdrant) · Google Gemini · Google's `text-embedding-004` · Google Sheets · Zoho Bigin CRM
+Built with **n8n** as the orchestration layer, **Qdrant** as the vector database, and **Google Gemini** as the LLM, the project is a hands-on implementation of a production-style RAG pipeline — going from "how do I stop the AI from hallucinating company info?" to a working, self-hosted chat automation system.
 
 ---
 
-## 🖼️ Project Screenshots & Workflow Diagrams
+## ✨ Key Features
 
-> Drop your exported images into an `/assets` folder in the repo and update the paths below.
-
-| | |
+| Feature | Description |
 |---|---|
-| **1. Main Workflow** — Instagram automation, RAG auto-reply, and lead capture in one n8n canvas | `![Main Workflow](assets/workflow-1-main.png)` |
-| **2. Ingestion Workflow** — company data → embeddings → Qdrant | `![Ingestion Workflow](assets/workflow-2-ingestion.png)` |
-| **3. CRM Sync Workflow** — scheduled Google Sheets → Zoho Bigin sync | `![CRM Sync Workflow](assets/workflow-3-crm-sync.png)` |
-| **4. Live Demo** — real Instagram chat showing the bot responding | `![Instagram Chat Demo](assets/instagram-chat-demo.png)` |
+| 🧠 **RAG-Powered Replies** | Answers are grounded in real company data retrieved from Qdrant, not the model's general knowledge |
+| 🔍 **Semantic Search** | Understands meaning, not just keywords — "good for photography" correctly matches a "200MP camera" listing |
+| 📇 **Automatic Lead Extraction** | An LLM agent pulls Name / Email / Phone straight out of natural conversation — no forms required |
+| 🔁 **Smart Upsert Logic** | New leads are appended, existing leads are updated without overwriting previously captured fields with nulls |
+| 👋 **New User Onboarding** | Unknown senders get a welcome message requesting their details before the RAG flow engages |
+| 🔄 **Scheduled CRM Sync** | Leads flow from Google Sheets into Zoho Bigin automatically, on a timer |
+| 🧹 **Resilient Parsing** | A Code node cleans/repairs the LLM's JSON output so malformed responses never break the workflow |
 
 ---
 
-## 🧠 Phase 1 — What is RAG, and Why This Project Needed It
+## 🏗️ System Architecture
 
-**RAG (Retrieval-Augmented Generation)** is a technique that lets an AI model answer questions using *your own data*, instead of relying only on what it learned during training.
+```mermaid
+flowchart LR
+    IG(["📷 Instagram DM"]) --> WH["Instagram Webhook"]
 
-**Without RAG:** Ask an LLM "What's the price of the Samsung S25?" and it either doesn't know, or it guesses — a hallucination.
+    subgraph ReplyPipeline["🧠 RAG Reply Pipeline"]
+        EMB["Embed User Question\n(text-embedding-004)"]
+        QD[("Qdrant\nfirstday-rag collection")]
+        AGENT["AI Agent (Gemini)\nAnswers from retrieved context"]
+        SEND["Send Reply\nInstagram Graph API"]
+        EMB --> QD --> AGENT --> SEND
+    end
 
-**With RAG:** The question is converted into an embedding, a vector database searches for the most relevant company document, that document is handed to the LLM as context, and the LLM answers *only* from that data — giving an accurate, company-specific reply.
+    subgraph LeadPipeline["📇 Lead Capture Pipeline"]
+        EXTRACT["AI Agent1 (Gemini)\nExtracts Name / Email / Phone"]
+        CLEAN["Code Node\nParses + repairs JSON"]
+        CHECK{"Any field found?"}
+        LOOKUP["Lookup by InstagramID"]
+        UPSERT{"Row Exists?"}
+        APPEND["Append new lead"]
+        UPDATE["Update existing lead"]
+        EXTRACT --> CLEAN --> CHECK
+        CHECK -- yes --> LOOKUP --> UPSERT
+        UPSERT -- no --> APPEND
+        UPSERT -- yes --> UPDATE
+    end
 
-### How RAG works in this project
+    subgraph Ingestion["📥 Ingestion Workflow (separate)"]
+        DOCS["Company Docs / Product Data"]
+        EMBED2["Embed Chunks"]
+        UPSERTQ["Upsert to Qdrant"]
+        DOCS --> EMBED2 --> UPSERTQ --> QD
+    end
+
+    subgraph CRMSync["⏱️ CRM Sync Workflow (separate)"]
+        SCHED["Schedule Trigger"]
+        READSHEET["Read Leads Sheet"]
+        PUSHCRM["Push to Zoho Bigin"]
+        SCHED --> READSHEET --> PUSHCRM
+    end
+
+    SHEET[("Google Sheets\nINSTAGRAM LEADS")]
+
+    WH --> ReplyPipeline
+    WH --> LeadPipeline
+    APPEND --> SHEET
+    UPDATE --> SHEET
+    READSHEET --> SHEET
+```
+
+---
+
+## 🔄 End-to-End Message Flow
+
+```mermaid
+flowchart TD
+    A(["📷 Customer Sends Instagram DM"]) --> B["Instagram Webhook Receives Event"]
+    B --> C{"Known Sender?\n(lookup by InstagramID)"}
+
+    C -- "No" --> D["👋 Send Welcome Message\nAsk for Name / Phone / Email"]
+    C -- "Yes" --> E["🔢 Embed Question\n(text-embedding-004)"]
+    E --> F["🔍 Search Qdrant\nTop-1 matching document"]
+    F --> G["🤖 Gemini AI Agent\nAnswers using retrieved knowledge"]
+    G --> H["📤 Reply Sent via Instagram Graph API"]
+
+    B --> I["🧩 AI Extraction Agent\nPulls Name / Email / Phone from message"]
+    I --> J["🧹 Clean + Parse JSON"]
+    J --> K{"Any contact\ninfo found?"}
+    K -- "No" --> Z(["End — nothing to save"])
+    K -- "Yes" --> L{"Lead already\nin Sheet?"}
+    L -- "No" --> M["➕ Append new row"]
+    L -- "Yes" --> N["✏️ Update existing row"]
+
+    M --> O[("Google Sheets\nINSTAGRAM LEADS")]
+    N --> O
+
+    O --> P["⏱️ Scheduled Trigger"]
+    P --> Q["Read new / updated leads"]
+    Q --> R["🔄 Push to Zoho Bigin CRM"]
+    R --> S(["📈 Sales team follows up"])
+```
+
+---
+
+## 🧠 How the RAG Pipeline Works
 
 | Step | What happens |
 |---|---|
 | 1 | Customer sends: *"What is the price of Samsung S25?"* |
-| 2 | The message is converted into an embedding (a numerical vector) |
-| 3 | That embedding is searched against Qdrant |
+| 2 | Message is converted into an embedding via Google's `text-embedding-004` |
+| 3 | That embedding is searched against the `firstday-rag` Qdrant collection |
 | 4 | Qdrant returns the closest matching document — e.g. *Samsung S25 — ₹74,999, free Buds worth ₹5,999* |
-| 5 | That retrieved text + the original question is sent to Gemini |
-| 6 | Gemini replies naturally: *"The Samsung S25 is ₹74,999 and currently includes free Galaxy Buds worth ₹5,999."* |
+| 5 | The retrieved text + original question is sent to Gemini as context |
+| 6 | Gemini replies naturally, grounded only in that retrieved data |
 
-### Why Qdrant, and what "semantic search" means
-
-Qdrant is a **vector database** — it stores embeddings instead of plain rows/columns, and retrieves by *meaning* rather than exact keyword match. A keyword search for "photography" fails to find a document that only mentions "200MP camera." A semantic search succeeds, because the embeddings for "photography" and "camera" land close together in vector space.
-
-- `Photography ≈ Camera`
-- `Cost ≈ Price`
-- `Buy ≈ Purchase`
-
-**RAG is the concept; Qdrant is one tool used to implement it.** Other implementation options considered: Chroma (local/small projects), Elasticsearch/OpenSearch (hybrid keyword + vector), FAISS (local vector index, no DB needed), or PostgreSQL + `pgvector` (SQL-based, good for smaller projects). Qdrant was chosen here for its fast semantic search and easy setup.
-
-**Embeddings** are produced by a pretrained embedding model, not written by hand — this project uses **Google's `text-embedding-004`**. Both the company documents (at ingestion time) and every incoming customer question (at query time) are converted through the *same* embedding model, which is what makes the comparison meaningful.
+**Why RAG at all?** The naive fix — stuffing all company data into every prompt — doesn't scale and burns through context limits. RAG instead retrieves only the *most relevant* snippet per question, keeping replies accurate and cheap. Several implementation options were evaluated (vector DB, local vector index via FAISS, hybrid keyword+vector search, SQL + `pgvector`) before settling on **Qdrant** for its fast semantic search and easy setup.
 
 ---
 
-## ⚙️ Phase 2 — How the Automation Actually Works
+## 🗂️ Project Structure
 
-There are **three n8n workflows** working together.
-
-### Workflow 1 — Main Automation (Instagram Webhook → RAG Reply + Lead Capture)
-
-This is the core workflow. A single Instagram webhook event triggers two things in parallel: a **RAG-powered reply**, and a **lead-capture check**.
-
-**0. Webhook verification (one-time setup by Meta)**
-- `Instagram Webhook` receives Meta's verification handshake.
-- `If` checks `hub.mode == subscribe` and `hub.verify_token` matches the configured secret.
-- `Respond to Webhook` confirms the subscription back to Meta.
-
-**Branch A — Answering the customer (RAG pipeline)**
-1. `Get row(s) in sheet2` looks up the sender's Instagram ID in the **INSTAGRAM LEADS** Google Sheet.
-2. `Is User Known` checks whether a matching row already exists.
-   - **Unknown sender** → `Send Welcome Message` posts a greeting via the Instagram Graph API asking for Name, Phone, and Email.
-   - **Known sender** → continues into the RAG flow:
-     - `Embed User Question` sends the message text to Google's `text-embedding-004` model to get its embedding.
-     - `Search Qdrant` searches the `firstday-rag` Qdrant collection for the closest matching document (top 1 result, with payload).
-     - `AI Agent` (Gemini) receives the original question + the retrieved knowledge, and is instructed to answer **only** using that retrieved content, kept short (system prompt caps replies to roughly 100 characters — good for chat UX).
-     - `HTTP Request1` posts Gemini's reply back to the customer via the Instagram Graph API `/messages` endpoint.
-
-**Branch B — Capturing lead details**
-1. `AI Agent1` (Gemini) acts as a **data-extraction engine**: it reads the raw incoming message and extracts `name`, `email`, and `phone` as strict JSON (nulls for anything not found).
-2. `Code in JavaScript` strips any stray Markdown fences from the AI's output and safely parses it into a real JSON object — falling back to all-nulls if parsing fails, so the workflow never crashes on a bad AI response.
-3. `If1` checks whether *at least one* of name/email/phone was actually found. If nothing was extracted, the branch stops here.
-4. `Get row(s) in sheet` looks up the sender's Instagram ID in the same lead sheet.
-5. `If2` checks whether that lookup found an existing row.
-   - **No existing row** → `Append row in sheet` creates a new lead: Name, Phone, Email, InstagramID, LastUpdated.
-   - **Existing row found** → `Update row in sheet` updates it, preferring the newly-extracted value but falling back to the previously stored value if the new extraction returned null (so a later message doesn't accidentally erase a previously captured phone number, for example).
-
-### Workflow 2 — Knowledge Ingestion (Data → Embeddings → Qdrant)
-
-This is the pipeline that *populates* the knowledge base Branch A searches against. Company data (product info, prices, offers, FAQs) is:
-1. Read/prepared as text chunks.
-2. Sent to the embedding model (Google `text-embedding-004`, or optionally OpenAI's `text-embedding-3-small`) to generate a vector for each chunk.
-3. Upserted into the `firstday-rag` Qdrant collection along with the original text as payload, so Search Qdrant can retrieve it later.
-
-*(Add your actual node-by-node breakdown here once you export this workflow's JSON — happy to document it the same way once you share it.)*
-
-### Workflow 3 — Scheduled CRM Sync (Google Sheets → Zoho Bigin)
-
-Runs on a **schedule trigger** (e.g. every few hours). It reads new or updated rows from the **INSTAGRAM LEADS** Google Sheet and pushes them into **Zoho Bigin CRM** (or any CRM), so the sales/marketing team works out of the CRM rather than a spreadsheet.
-
-*(Same note — document the exact node flow here once exported.)*
+```
+LeadPilot-AI/
+├── workflows/
+│   ├── 1-main-instagram-rag-agent.json     # Webhook → RAG reply + lead capture
+│   ├── 2-knowledge-ingestion.json          # Company data → embeddings → Qdrant
+│   └── 3-crm-sync.json                     # Scheduled Google Sheets → Zoho Bigin
+├── knowledge-base/
+│   └── product-catalog.md                  # Source docs fed into the ingestion workflow
+├── assets/
+│   ├── workflow-1-main.png
+│   ├── workflow-2-ingestion.png
+│   ├── workflow-3-crm-sync.png
+│   └── instagram-chat-demo.png
+└── README.md
+```
 
 ---
 
-## 🚧 Challenges & How They Were Solved
+## 🧩 Core Nodes & Responsibilities (Main Workflow)
 
-**"How does the AI know our company's information?"**
-Early on, the instinct was to stuff the entire company knowledge base into every prompt sent to the AI. That doesn't scale — it burns through token/context limits fast and isn't a real solution. Researching alternatives led to RAG: instead of sending everything, only the *most relevant* piece of information is retrieved and sent, based on the customer's specific question. Several RAG implementation options were evaluated (vector DB, local vector index, hybrid search, SQL + embeddings) before settling on Qdrant for its simplicity and speed.
+| Node | Role |
+|---|---|
+| `Instagram Webhook` | Receives incoming DMs; also handles Meta's webhook verification handshake |
+| `Is User Known` | Checks if the sender's InstagramID already exists in the leads sheet |
+| `Send Welcome Message` | Greets new senders and requests their contact details |
+| `Embed User Question` | Converts the customer's message into a vector via `text-embedding-004` |
+| `Search Qdrant` | Retrieves the closest matching knowledge-base document |
+| `AI Agent` (Gemini) | Generates the reply, grounded strictly in retrieved context |
+| `HTTP Request1` | Sends the AI's reply back via the Instagram Graph API |
+| `AI Agent1` (Gemini) | Extracts Name / Email / Phone from the raw message as JSON |
+| `Code in JavaScript` | Cleans and safely parses the extraction agent's JSON output |
+| `Append row in sheet` / `Update row in sheet` | Upserts the lead into Google Sheets without erasing existing data |
 
-**"How do you know an Instagram conversation has ended?"**
-Instagram DMs don't have a fixed "conversation over" event. The chosen approach is an **inactivity timeout**: if no new message arrives from the customer within a defined window (e.g. 10–15 minutes), the conversation is treated as complete. An alternative — detecting explicit closing phrases like "thank you" — was considered but judged less reliable than the timeout approach.
+---
 
-**"Is Google Sheets good enough for production?"**
-No — it doesn't scale well and isn't built for concurrent, high-volume writes. It's used here as a fast, visual way to prototype and demo; the plan is to migrate to a proper database (see below).
+## 🧰 Tech Stack
+
+**Orchestration:** n8n
+**LLM:** Google Gemini
+**Embeddings:** Google `text-embedding-004`
+**Vector Database:** Qdrant
+**Data Processing:** Python / JavaScript (Code nodes)
+**Lead Storage:** Google Sheets
+**CRM:** Zoho Bigin
+**Messaging Channel:** Instagram Graph API
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- A running n8n instance (self-hosted or cloud)
+- A Qdrant instance (self-hosted or managed, e.g. Railway)
+- Google Gemini API key
+- Meta/Instagram Business account with Graph API access + a verified webhook
+- Google Sheets API access (service account or OAuth)
+- Zoho Bigin API credentials
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/<your-username>/LeadPilot-AI.git
+cd LeadPilot-AI
+```
+
+### 2. Import the workflows into n8n
+In your n8n instance: **Workflows → Import from File**, and import each file from `workflows/` in order (ingestion → main → CRM sync).
+
+### 3. Configure credentials
+Replace every hardcoded key in the imported workflows with proper n8n **Credentials**:
+- Google Gemini API key
+- Instagram Graph API access token
+- Qdrant instance URL
+- Google Sheets OAuth/service account
+- Zoho Bigin API credentials
+
+### 4. Set your Instagram webhook
+Point your Meta App's webhook URL to the `Instagram Webhook` node's production URL, and set the verify token to match the `If` node's check.
+
+### 5. Load your knowledge base
+Run **Workflow 2** to embed and upsert your company's product/FAQ data into Qdrant before going live.
+
+### 6. Activate
+Turn on **Workflow 1** (main) and **Workflow 3** (scheduled CRM sync) in n8n.
+
+---
+
+## 🔐 Security Note
+
+> ⚠️ Never commit API keys, access tokens, or webhook verify tokens directly inside exported workflow JSON. Use n8n's built-in Credentials system or environment variables, and add `workflows/*.json` to a review checklist before pushing to a public repo.
 
 ---
 
 ## 🚀 Future Enhancements
 
-- **Lead scoring** — classify each captured lead as High / Moderate / Low interest based on conversation sentiment, buying intent, and engagement, so the sales team can prioritize follow-ups.
-- **Low-interest lead retention** — rather than discarding non-qualified conversations, log them separately so marketing can re-engage later if resources allow.
-- **Move off Google Sheets** — migrate lead storage to a production-grade database such as **PostgreSQL**, **MySQL**, or **MongoDB**.
-- **True sentiment analysis pass** — add an AI-based sentiment/buying-intent classification step on completed conversations, in addition to the current contact-detail extraction.
+- **Lead scoring** — classify leads as High / Moderate / Low interest based on sentiment and buying intent
+- **Low-interest lead retention** — log non-qualified conversations instead of discarding them
+- **Production database migration** — move lead storage from Google Sheets to PostgreSQL / MySQL / MongoDB
+- **Conversation-level sentiment analysis** — run once an inactivity timeout marks a conversation as complete
 
 ---
 
-## 🔐 Setup Notes (Read Before Publishing This Repo)
+<div align="center">
 
-- The exported n8n workflow JSON in this project currently has an API key and an Instagram access token **hardcoded directly in node parameters**. Before committing this repo publicly:
-  - Rotate the Gemini API key and the Instagram Graph API token.
-  - Replace hardcoded values with n8n **Credentials** or environment variables.
-- Required credentials/services to run this yourself:
-  - Instagram/Meta Graph API access token + verified webhook
-  - Google Gemini API key
-  - Qdrant instance (self-hosted or managed) + a collection for your knowledge base
-  - Google Sheets API access (service account or OAuth)
-  - Zoho Bigin (or your CRM of choice) API credentials
+[GitHub](https://github.com/<your-username>) · [LinkedIn](https://www.linkedin.com/in/<your-linkedin>)
 
----
+</div>
 
-## 🧩 Quick Reference: Key Concepts
-
-| Term | Meaning |
-|---|---|
-| **RAG** | Retrieving relevant company data first, then having the LLM generate an answer grounded in that data |
-| **Embedding** | A numerical vector representation of text that captures meaning, produced by an embedding model |
-| **Vector Database (Qdrant)** | A database built to store embeddings and perform semantic similarity search (via HNSW indexing + cosine/dot-product similarity) |
-| **Semantic Search** | Finding results based on meaning, not exact keyword matches |
-| **Prompt Engineering** | Structuring instructions/context given to an AI model to get consistent, accurate output |
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=fadeIn" width="100%"/>
