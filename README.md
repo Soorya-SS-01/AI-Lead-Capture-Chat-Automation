@@ -229,8 +229,10 @@ LeadPilot-AI/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/LeadPilot-AI.git
-cd LeadPilot-AI
+git clone https://github.com/<your-username>/AI-Lead-Capture-Chat-Automation
+.git
+cd AI-Lead-Capture-Chat-Automation
+
 ```
 
 ### 2. Import the workflows into n8n
@@ -252,12 +254,6 @@ Run **Workflow 2** to embed and upsert your company's product/FAQ data into Qdra
 
 ### 6. Activate
 Turn on **Workflow 1** (main) and **Workflow 3** (scheduled CRM sync) in n8n.
-
----
-
-## 🔐 Security Note
-
-> ⚠️ Never commit API keys, access tokens, or webhook verify tokens directly inside exported workflow JSON. Use n8n's built-in Credentials system or environment variables, and add `workflows/*.json` to a review checklist before pushing to a public repo.
 
 ---
 
