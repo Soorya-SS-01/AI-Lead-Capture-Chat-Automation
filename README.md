@@ -1,8 +1,8 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=190&section=header&text=LeadPilot%20AI&fontSize=32&fontColor=fff&animation=fadeIn&fontAlignY=32&desc=AI%20RAG%20Chat%20Agent%20%2B%20Lead%20Capture%20for%20Instagram&descAlignY=62&descSize=22" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=190&section=header&text=AI%20Lead%20Capture%20Chat%20Automation&fontSize=30&fontColor=fff&animation=fadeIn&fontAlignY=32&desc=AI%20RAG%20Chat%20Agent%20%2B%20Lead%20Capture%20for%20Instagram&descAlignY=62&descSize=22" width="100%"/>
 
 <div align="center">
 
-### 🤖 Auto-Replies with Company Knowledge &nbsp;|&nbsp; 📇 Captures Leads Automatically &nbsp;|&nbsp; 🔄 Syncs to CRM
+###  Auto-Replies with Company Knowledge &nbsp;|&nbsp;  Captures Leads Automatically &nbsp;|&nbsp;  Syncs to CRM
 
 </div>
 
@@ -135,7 +135,7 @@ flowchart TD
     F --> G["🤖 Gemini AI Agent\nAnswers using retrieved knowledge"]
     G --> H["📤 Reply Sent via Instagram Graph API"]
 
-    B --> I["🧩 AI Extraction Agent\nPulls Name / Email / Phone from message"]
+    B --> I["🧩 AI Extraction Agent\nPulls Name / Email / Phone from message and does Sentimental analysis to identify whether it is a potential lead"]
     I --> J["🧹 Clean + Parse JSON"]
     J --> K{"Any contact\ninfo found?"}
     K -- "No" --> Z(["End — nothing to save"])
@@ -200,7 +200,7 @@ LeadPilot-AI/
 | `Search Qdrant` | Retrieves the closest matching knowledge-base document |
 | `AI Agent` (Gemini) | Generates the reply, grounded strictly in retrieved context |
 | `HTTP Request1` | Sends the AI's reply back via the Instagram Graph API |
-| `AI Agent1` (Gemini) | Extracts Name / Email / Phone from the raw message as JSON |
+| `AI Agent1` (Gemini) | Extracts Name / Email / Phone from the raw message as JSON and does sentiment analysis to find whether it is a potential lead|
 | `Code in JavaScript` | Cleans and safely parses the extraction agent's JSON output |
 | `Append row in sheet` / `Update row in sheet` | Upserts the lead into Google Sheets without erasing existing data |
 
