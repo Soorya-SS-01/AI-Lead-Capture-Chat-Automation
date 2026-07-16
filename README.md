@@ -28,17 +28,15 @@
 <div align="center">
 <table>
 <tr>
-<td width="50%" align="center"><b>Main Workflow</b><br/><img src="assets/workflow-1-main.png" width="100%"/></td>
-<td width="50%" align="center"><b>Knowledge Ingestion Workflow</b><br/><img src="assets/workflow-2-ingestion.png" width="100%"/></td>
+<td width="50%" align="center"><b>Main Workflow</b><br/><img src="assets/workflow-1-main.jpg" width="100%"/></td>
+<td width="50%" align="center"><b>Knowledge Ingestion Workflow</b><br/><img src="assets/workflow-2-ingestion.jpg" width="100%"/></td>
 </tr>
 <tr>
-<td width="50%" align="center"><b>CRM Sync Workflow</b><br/><img src="assets/workflow-3-crm-sync.png" width="100%"/></td>
-<td width="50%" align="center"><b>Live Instagram Chat</b><br/><img src="assets/instagram-chat-demo.png" width="100%"/></td>
+<td width="50%" align="center"><b>CRM Sync Workflow</b><br/><img src="assets/workflow-3-crm-sync.jpg" width="100%"/></td>
+<td width="50%" align="center"><b>Live Instagram Chat</b><br/><img src="assets/instagram-chat-demo.jpg" width="100%"/></td>
 </tr>
 </table>
 </div>
-
-> 📁 Drop your exported PNGs into an `assets/` folder in the repo root with these exact filenames, and the images above will render automatically on GitHub.
 
 ---
 
