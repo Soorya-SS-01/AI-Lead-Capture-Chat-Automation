@@ -28,11 +28,11 @@
 <div align="center">
 <table>
 <tr>
-<td width="50%" align="center"><b>Main Workflow</b><br/><img src="assets/workflow-1-main.jpg" width="100%"/></td>
-<td width="50%" align="center"><b>Knowledge Ingestion Workflow</b><br/><img src="assets/workflow-2-ingestion.jpg" width="100%"/></td>
+<td width="50%" align="center"><b>Main Workflow (Auto reply and Lead Capture)</b><br/><img src="assets/workflow-1-main.jpg" width="100%"/></td>
+<td width="50%" align="center"><b>Knowledge Ingestion Workflow (Upload data to RAG)</b><br/><img src="assets/workflow-2-ingestion.jpg" width="100%"/></td>
 </tr>
 <tr>
-<td width="50%" align="center"><b>CRM Sync Workflow</b><br/><img src="assets/workflow-3-crm-sync.jpg" width="100%"/></td>
+<td width="50%" align="center"><b>CRM Sync Workflow (Google Sheets/Database to CRM</b><br/><img src="assets/workflow-3-crm-sync.jpg" width="100%"/></td>
 <td width="50%" align="center"><b>Live Instagram Chat</b><br/><img src="assets/instagram-chat-demo.jpg" width="100%"/></td>
 </tr>
 </table>
